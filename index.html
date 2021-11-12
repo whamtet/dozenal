@@ -4,44 +4,124 @@
     <meta charset="UTF-8">
     <title>Dozenal Time</title>
     <style>
-        #time {
-            color: white;
-        }
         .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: black;
             height: 100vh;
+            position: relative;
+            color: white;
+        }
+        #time {
+            letter-spacing: 0.15em;
+            top: 45vh;
+            position: relative;
+            margin-top: 0;
+            text-align: center;
+        }
+        #myBtn {
+            position: absolute;
+            right: 1em;
+            bottom: 1em;
+            font-size: 2em;
+            cursor: pointer;
         }
         body {
             margin: 0;
+            font-family: sans-serif;
+        }
+        .digits {
+            display: inline-flex;
+            margin-right: 10px;
+        }
+        .digits div {
+            font-size: 2.5em;
+            background-color: grey;
+            padding: 0.4em;
+            margin: 0.1em;
+        }
+        .mb {
+            margin-bottom: 10px;
+        }
+        .calc {
+            min-height: 3em;
+            display: inline-flex;
+            align-items: center;
         }
     </style>
     <link rel="stylesheet" href="modal.css">
 </head>
 <body>
 <div class="container">
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn" onclick="showModal()">Open Modal</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close" onclick="hideModal()">&times;</span>
-            <h1>Dozenal Time</h1>
-            <h3>A better way to tell the time</h3>
-            <p>The day is divided into 12 four times.  The first digit is 2 hours (24 hours divided by 12).</p>
-            <p>The second digit is 10 minutes (2 hours divided by 12).</p>
-            <p>The third digit is 50 seconds (10 minutes divided by 12).</p>
-            <p>The last digit is 4 1/6 seconds (50 seconds divided by 12).</p>
-            <p>Simple, symmetric and </p>
-        </div>
-
-    </div>
     <h1 id="time">asdf</h1>
+    <div id="myBtn" onclick="showModal()">?</div>
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" onclick="hideModal()">&times;</span>
+        <h1>Dozenal Time</h1>
+        <h3>A better way to tell the time</h3>
+        <p>The day is divided into 12 four times.  The first digit is 2 hours (24 hours divided by 12).</p>
+        <p>The second digit is 10 minutes (2 hours divided by 12).</p>
+        <p>The third digit is 50 seconds (10 minutes divided by 12).</p>
+        <p>The last digit is 4 1/6 seconds (50 seconds divided by 12).</p>
+        <div class="mb">
+            <div class="digits">
+                <div>5</div>
+                <div>a</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+            <div class="calc">
+                11:44:35 am.
+            </div>
+        </div>
+        <div class="mb">
+            <div class="digits">
+                <div>5</div>
+            </div>
+            <div class="calc">
+                5 * 2 hours = 10 am.
+            </div>
+        </div>
+        <div class="mb">
+            <div class="digits">
+                <div>5</div>
+                <div>a</div>
+            </div>
+            <div class="calc">
+                5 * 2 hours + a * 10 minutes = 11:40 am.
+            </div>
+        </div>
+        <div class="mb">
+            <div class="digits">
+                <div>5</div>
+                <div>a</div>
+                <div>5</div>
+            </div>
+            <div class="calc">
+                5 * 2 hours + a * 10 minutes + 5 * 50 seconds = 11:44:10 am.
+            </div>
+        </div>
+        <div>
+            <div class="digits">
+                <div>5</div>
+                <div>a</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+            <div class="calc">
+                5 * 2 hours + a * 10 minutes + 5 * 50 seconds + 6 * 4/16 seconds = 11:44:35 am.
+            </div>
+        </div>
+        <hr>
+        <p>
+            As you can see dozenal time is symmetric and elegant.
+            It also opens people's minds to number systems beyond base-10.
+        </p>
+    </div>
+
 </div>
 </body>
 <script>
