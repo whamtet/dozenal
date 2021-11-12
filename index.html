@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dozenal Time</title>
+    <style>
+        #time {
+            color: white;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            height: 100vh;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+<div class="container">
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" onclick="showModal()">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="hideModal()">&times;</span>
+            <h1>Dozenal Time</h1>
+            <h3>A better way to tell the time</h3>
+            <p>The day is divided into 12 four times.  The first digit is 2 hours (24 hours divided by 12).</p>
+            <p>The second digit is 10 minutes (2 hours divided by 12).</p>
+            <p>The third digit is 50 seconds (10 minutes divided by 12).</p>
+            <p>The last digit is 4 1/6 seconds (50 seconds divided by 12).</p>
+            <p>Simple, symmetric and </p>
+        </div>
+
+    </div>
+    <h1 id="time">asdf</h1>
+</div>
+</body>
+<script>
+    const getTime = () => {
+        const display = '0123456789ab';
+
+        const d = new Date();
+        const secs = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds() + d.getMilliseconds() * 0.001;
+        let frac = secs / 3600 / 24;
+        let out = '';
+        for (let i = 0; i < 4; i++) {
+            frac *= 12;
+            const i = Math.floor(frac);
+            out += display[i];
+            frac -= i;
+        }
+        return out;
+    }
+    const setTime = () => document.body.querySelector('#time').innerHTML = getTime();
+    setInterval(setTime, 50*1000/12);
+    setTime();
+</script>
+<script src="modal.js"></script>
+</html>
